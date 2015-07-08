@@ -24,6 +24,7 @@ client = IvonaSpeechCloud::Client.new do |config|
 end
 
 client.create_speech('Hello world!')
+```
 
 ## Contributing
 
