@@ -1,26 +1,29 @@
 # IvonaSpeechCloud
 
-TODO: Write a gem description
+A Ruby client for the Ivona Speech Cloud service.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ivona_speech_cloud'
+gem 'ivona_speech_cloud', github: "martianinteractive/ivona_speech_cloud"
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install ivona_speech_cloud
-
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+client = IvonaSpeechCloud::Client.new do |config|
+  config.access_key = "YOUR-ACCESS-KEY"
+  config.secret_key = "YOUR-SECRET-KEY"
+  config.region = "us-east-1"
+end
+
+client.create_speech('Hello world!')
 
 ## Contributing
 
