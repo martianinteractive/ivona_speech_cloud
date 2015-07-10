@@ -23,8 +23,6 @@ module IvonaSpeechCloud
       "#{@client.endpoint}#{@path}"
     end
 
-    def gender
-      @options.fetch(:gender, "female")
     end
 
   end
