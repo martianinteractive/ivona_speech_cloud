@@ -35,7 +35,7 @@ module IvonaSpeechCloud
       }
     end
 
-    # @return URI::HTTPS
+    # @return [URI::HTTPS]
     def uri
       @uri = begin
         uri = URI(endpoint)
@@ -44,38 +44,48 @@ module IvonaSpeechCloud
       end
     end
 
+    # @return [String]
     def endpoint
       "https://#{host}"
     end
 
+    # @return [String]
     def host
       "tts.#{region}.ivonacloud.com"
     end
 
+    # @return [String]
     def x_amz_date
       date.strftime("%Y%m%dT%H%M%SZ")
     end
 
+    # @return [Time]
     def date
       @date ||= Time.now.utc
     end
 
+    # @param body [String]
+    # @return [String]
     def x_amz_content_sha256(body="")
       Digest::SHA256.new.update(body).hexdigest
     end
 
+    # @return [String]
     def content_type
       "application/json"
     end
 
+    # @return [Hash]
     def signed_headers
       signer.sign("POST", uri, headers, body)
     end
 
+    # @return [AWS4::Signer]
     def signer
       @signer ||= AWS4::Signer.new(credentials)
     end
 
+    # @return [Hash]
     def headers
       @headers ||= {
         "Content-Type" => content_type,
