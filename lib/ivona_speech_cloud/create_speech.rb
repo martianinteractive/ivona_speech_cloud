@@ -26,7 +26,7 @@ module IvonaSpeechCloud
 
     # @return [Hash]
     def input
-      SpeechInput.new(text, options).params
+      Input::CreateSpeech.new(text, options).params
     end
 
     private 
@@ -37,7 +37,7 @@ module IvonaSpeechCloud
         body: input, 
         headers: @client.signed_headers
       }
-      
+
       HTTParty.post(@client.uri, post_options)
     end
   end
