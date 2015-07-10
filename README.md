@@ -14,7 +14,7 @@ And then execute:
 
     $ bundle
 
-## Usage
+## Setup
 
 ```ruby
 client = IvonaSpeechCloud::Client.new do |config|
@@ -36,7 +36,7 @@ You can pass a hash of options as the second argument, i.e:
 client.create_speech('Hola mundo!', {language: "es-ES", gender: "Female", voice_name: "Conchita"})
 ```
 
-## Listing voices
+## Listing Voices
 
 ```ruby
 client.list_voices
