@@ -13,11 +13,16 @@ module IvonaSpeechCloud
       options.each do |key, value|
         instance_variable_set("@#{key}", value)
       end
+
       yield(self) if block_given?
     end
 
     def create_speech(text, options={})
-      Speech.new(self, text, options).create
+      speech(text, options).create
+    end
+
+    def speech(text, options)
+      Speech.new(self, text, options)
     end
 
     # @return [Hash]
