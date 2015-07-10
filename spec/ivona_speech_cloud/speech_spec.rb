@@ -31,7 +31,11 @@ describe IvonaSpeechCloud::Speech do
   
       it "sets the payload with the passed options" do
         json_payload = JSON(speech_with_options.payload)
-        expect(json_payload["OutputFormat"]).to eq({"Codec" => "OGG", "SampleRate" => 22050})
+        
+        expect(json_payload["OutputFormat"]).to eq({
+          "Codec" => "OGG", 
+          "SampleRate" => 22050
+          })
       end
     end
   end
