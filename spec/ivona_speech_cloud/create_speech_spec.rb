@@ -11,7 +11,7 @@ describe IvonaSpeechCloud::CreateSpeech do
   it { expect(subject.options).to eq Hash.new }
 
   context "#create" do
-    before { stubbed_request }
+    before { stub_create_speech_request }
 
     it "returns an HTTParty response" do
       expect(subject.run.class).to eq HTTParty::Response

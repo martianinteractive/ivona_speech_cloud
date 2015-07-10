@@ -13,8 +13,15 @@ def client_instance
   end
 end
 
-def stubbed_request
+def stub_create_speech_request
   stub_request(:post, "https://tts.us-east-1.ivonacloud.com/CreateSpeech").
   with(:body => "{\"Input\":{\"Data\":\"hello world!\"},\"OutputFormat\":{\"Codec\":\"MP3\",\"SampleRate\":22050},\"Parameters\":{\"Rate\":\"medium\",\"Volume\":\"medium\",\"SentenceBreak\":500,\"ParagraphBreak\":800},\"Voice\":{\"Name\":\"Salli\",\"Language\":\"en-US\",\"Gender\":\"Female\"}}").
   to_return(:status => 200, :body => "", :headers => {})
+end
+
+
+def stub_list_voices_request
+   stub_request(:post, "https://tts.us-east-1.ivonacloud.com/ListVoices").
+   with(:body => "{\"Voice\":{\"Language\":\"en-US\"}}").
+     to_return(:status => 200, :body => "", :headers => {})
 end

@@ -62,7 +62,7 @@ describe IvonaSpeechCloud::Client do
 
   context "#create_speech" do
 
-    before {stubbed_request}
+    before {stub_create_speech_request}
 
     it { expect(subject.create_speech("hello world!").class.name).to eq "HTTParty::Response" }
 
