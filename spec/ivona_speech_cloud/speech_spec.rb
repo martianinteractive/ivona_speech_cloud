@@ -2,12 +2,6 @@ require 'helper'
 
 describe IvonaSpeechCloud::Speech do
 
-  before do 
-    stub_request(:post, "https://tts.us-east-1.ivonacloud.com/CreateSpeech").
-         with(:body => "{\"Input\":{\"Data\":\"hello world!\"},\"OutputFormat\":{\"Codec\":\"MP3\",\"SampleRate\":22050},\"Parameters\":{\"Rate\":\"medium\",\"Volume\":\"medium\",\"SentenceBreak\":500,\"ParagraphBreak\":800},\"Voice\":{\"Name\":\"Salli\",\"Language\":\"en-US\",\"Gender\":\"Female\"}}").
-         to_return(:status => 200, :body => "test", :headers => {})
-  end
-
   let(:client) { client_instance }
   
   subject { IvonaSpeechCloud::Speech.new(client, "hello world!") }
@@ -17,6 +11,8 @@ describe IvonaSpeechCloud::Speech do
   it { expect(subject.options).to eq Hash.new }
 
   context "#create" do
+    before { stubbed_request }
+    
     it "returns an HTTParty response" do
       expect(subject.create.class).to eq HTTParty::Response
     end

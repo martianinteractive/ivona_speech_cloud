@@ -60,12 +60,23 @@ describe IvonaSpeechCloud::Client do
     it { expect(subject.signed_headers.has_key?("Authorization")).to eq true }
   end
 
-  context "#speech" do
-    it { expect(subject.speech("hello world!", {})).to be_a IvonaSpeechCloud::Speech }
+  context "#create_speech" do
 
-    it { expect(subject.speech("hello world!", {}).options).to eq({}) }
+    before {stubbed_request}
 
-    it { expect(subject.speech("hello world!", {codec: "OGG"}).options).to eq({codec: "OGG"}) }
+    it { expect(subject.create_speech("hello world!").class.name).to eq "HTTParty::Response" }
+
+    it "changes the path to /CreateSpeech" do
+      expect { 
+        subject.create_speech("hello world!")
+        }.to change {subject.path }.from(nil).to('/CreateSpeech')
+    end
+
+    it "changes the body to a string representation of the JSON payload" do
+      expect {
+        subject.create_speech("hello world!")
+      }.to change { subject.body }.from(nil).to("{\"Input\":{\"Data\":\"hello world!\"},\"OutputFormat\":{\"Codec\":\"MP3\",\"SampleRate\":22050},\"Parameters\":{\"Rate\":\"medium\",\"Volume\":\"medium\",\"SentenceBreak\":500,\"ParagraphBreak\":800},\"Voice\":{\"Name\":\"Salli\",\"Language\":\"en-US\",\"Gender\":\"Female\"}}")
+    end
 
   end
 
