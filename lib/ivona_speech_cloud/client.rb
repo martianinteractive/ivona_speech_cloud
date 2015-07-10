@@ -44,15 +44,16 @@ module IvonaSpeechCloud
     end
 
     def endpoint
-      @endpoint ||= "https://#{host}"
+      "https://#{host}"
     end
 
     def host
-      @host ||= "tts.#{region}.ivonacloud.com"
+      "tts.#{region}.ivonacloud.com"
+    end
     end
 
     def signed_headers
-      @signed_headers ||= signer.sign("POST", uri, headers, body)
+      signer.sign("POST", uri, headers, body, true)
     end
 
     def signer
