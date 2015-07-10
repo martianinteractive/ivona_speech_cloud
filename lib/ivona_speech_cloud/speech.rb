@@ -6,11 +6,11 @@ module IvonaSpeechCloud
       @client = client
       @text = text
       @options = options
-      @client.body = payload
     end
 
     def create
       perform_post('/CreateSpeech')
+      @client.body = payload
     end
 
     def perform_post(path)
