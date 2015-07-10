@@ -19,30 +19,6 @@ module IvonaSpeechCloud
       HTTParty.post(uri, body: payload, headers: @client.signed_headers)
     end
 
-    def payload
-      {
-          "Input": {
-              "Data": @text
-          },
-          "OutputFormat": {
-              "Codec": codec,
-              "SampleRate": sample_rate,
-          },
-
-          "Parameters": {
-              "Rate": rate,
-              "Volume": volume,
-              "SentenceBreak": sentence_break,
-              "ParagraphBreak": paragraph_break
-          },
-
-          "Voice": {
-              "Name": voice_name,
-              "Language": language,
-              "Gender": gender
-          }
-      }.to_json
-    end
 
     def codec
       @options.fetch(:codec, "MP3")
