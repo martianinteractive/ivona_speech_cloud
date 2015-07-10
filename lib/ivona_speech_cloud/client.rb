@@ -3,8 +3,8 @@ require 'httparty'
 
 module IvonaSpeechCloud
   class Client
-    attr_accessor :access_key, :secret_key, :region, :body
-
+    attr_accessor :access_key, :secret_key, :region, :body, :path
+    
     # Initializes a new Client object
     #
     # @param options [Hash]
