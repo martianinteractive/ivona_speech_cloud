@@ -82,7 +82,7 @@ module IvonaSpeechCloud
       end
 
       def voice_name
-        options.fetch(:voice, DEFAULT[:voice_name])
+        options.fetch(:voice_name, DEFAULT[:voice_name])
       end
 
     end
