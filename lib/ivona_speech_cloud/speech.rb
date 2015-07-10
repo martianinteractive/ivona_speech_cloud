@@ -15,8 +15,8 @@ module IvonaSpeechCloud
       perform_post
     end
 
-    def perform_post(path)
-      HTTParty.post("#{@client.endpoint}#{path}", body: payload, headers: @client.signed_headers)
+    def perform_post
+      HTTParty.post(uri, body: payload, headers: @client.signed_headers)
     end
 
     def payload
