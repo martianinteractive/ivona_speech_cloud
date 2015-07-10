@@ -23,7 +23,8 @@ module IvonaSpeechCloud
       "#{@client.endpoint}#{@path}"
     end
 
+    def payload
+      Payload.new(text, options).create
     end
-
   end
 end
