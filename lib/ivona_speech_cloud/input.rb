@@ -101,7 +101,7 @@ module IvonaSpeechCloud
           "Voice" => {
             "Language" => language
           }.merge(options)
-        }
+        }.to_json
       end
     end
   end
