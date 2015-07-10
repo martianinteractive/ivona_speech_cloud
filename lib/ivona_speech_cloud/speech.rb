@@ -24,11 +24,6 @@ module IvonaSpeechCloud
       perform_post
     end
 
-    # @return [String]
-    def uri
-      "#{@client.endpoint}#{@path}"
-    end
-
     # @return [IvonaSpeechCloud::Payload]
     def payload
       Payload.new(text, options).create

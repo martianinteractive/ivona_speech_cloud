@@ -12,17 +12,16 @@ describe IvonaSpeechCloud::Speech do
 
   context "#create" do
     before { stubbed_request }
-    
+
     it "returns an HTTParty response" do
       expect(subject.create.class).to eq HTTParty::Response
     end
   end
 
-  it { expect(subject.uri).to eq "https://tts.us-east-1.ivonacloud.com/CreateSpeech" }
-
   context "#payload" do
     it "contains the input data" do
       json_payload = JSON(subject.payload)
+      
       expect(json_payload["Input"]).to eq({"Data" => "hello world!"})
     end
 
