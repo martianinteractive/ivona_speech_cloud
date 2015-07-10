@@ -15,6 +15,10 @@ describe IvonaSpeechCloud::Payload do
 
     it { expect(subject.options).to eq({codec: "OGG"}) }
 
-    it { expect(JSON(subject.create)["OutputFormat"]).to eq({"Codec" => "OGG", "SampleRate" => 22050})}
+    it { expect(JSON(subject.speech_params)["OutputFormat"]).to eq({
+        "Codec" => "OGG", 
+        "SampleRate" => 22050
+        })
+      }
   end
 end
