@@ -41,8 +41,11 @@ client.create_speech('Hola mundo!', {language: "es-ES", gender: "Female", voice_
 ```ruby
 client.list_voices
 
-# => {"Voices"=>
-#    [{"Gender"=>"Female", "Language"=>"en-US", "Name"=>"Salli"},... ]}
+# => {"Voices"=>[{"Gender"=>"Female", "Language"=>"en-US", "Name"=>"Salli"},... ]}
+
+client.list_voices({Language: "es-ES"})
+
+# => {"Voices"=>[{"Gender"=>"Female", "Language"=>"es-ES", "Name"=>"Conchita"}, {"Gender"=>"Male", "Language"=>"es-ES", "Name"=>"Enrique"}]}
 ```
 
 ## Contributing
