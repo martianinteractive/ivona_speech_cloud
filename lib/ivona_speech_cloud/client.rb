@@ -34,8 +34,13 @@ module IvonaSpeechCloud
       }
     end
 
+    # @return URI::HTTPS
     def uri
-      @uri ||= URI(endpoint)
+      @uri = begin
+        uri = URI(endpoint)
+        uri.path = path if path
+        uri
+      end
     end
 
     def endpoint
