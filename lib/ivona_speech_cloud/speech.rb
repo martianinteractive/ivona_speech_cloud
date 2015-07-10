@@ -37,7 +37,7 @@ module IvonaSpeechCloud
         body: payload, 
         headers: @client.signed_headers
       }
-      HTTParty.post(uri, post_options)
+      HTTParty.post(@client.uri, post_options)
     end
   end
 end
