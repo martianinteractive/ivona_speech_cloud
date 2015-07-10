@@ -23,7 +23,7 @@ module IvonaSpeechCloud
     # @param options [Hash]
     # @return [String]
     def create_speech(text, options={})
-      speech(text, options).create
+      CreateSpeech.new(self, text, options).run
     end
 
     # @return [Hash]
@@ -100,13 +100,5 @@ module IvonaSpeechCloud
       credentials.values.all?
     end
 
-    private
-
-    # @param text [String]
-    # @param options [Hash]
-    # @return [IvonaSpeechCloud::Speech]
-    def speech(text, options)
-      CreateSpeech.new(self, text, options)
-    end
   end
 end
