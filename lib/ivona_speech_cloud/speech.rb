@@ -1,6 +1,5 @@
 module IvonaSpeechCloud
   class Speech
-    include HTTParty
 
     def initialize(client, text, options)
       @client = client
