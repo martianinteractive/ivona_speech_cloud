@@ -106,7 +106,7 @@ module IvonaSpeechCloud
     # @param options [Hash]
     # @return [IvonaSpeechCloud::Speech]
     def speech(text, options)
-      Speech.new(self, text, options)
+      CreateSpeech.new(self, text, options)
     end
   end
 end

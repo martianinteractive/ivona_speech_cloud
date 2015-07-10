@@ -1,13 +1,13 @@
 module IvonaSpeechCloud
-  class Speech
+  class CreateSpeech
     attr_accessor :text, :options
 
-    # Initializes a new Speech object
+    # Initializes a new CreateSpeech object
     #
     # @param client [IvonaSpeechCloud::Client]
     # @param text [String]
     # @param options [Hash]
-    # @return [IvonaSpeechCloud::Speech]
+    # @return [IvonaSpeechCloud::CreateSpeech]
     def initialize(client, text, options={})
       @client = client
       @text = text
@@ -24,9 +24,9 @@ module IvonaSpeechCloud
       perform_post
     end
 
-    # @return [IvonaSpeechCloud::Payload]
+    # @return [Hash]
     def payload
-      Payload.new(text, options).create
+      SpeechInput.new(text, options).params
     end
 
     private 

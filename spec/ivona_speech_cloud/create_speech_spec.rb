@@ -1,10 +1,10 @@
 require 'helper'
 
-describe IvonaSpeechCloud::Speech do
+describe IvonaSpeechCloud::CreateSpeech do
 
   let(:client) { client_instance }
   
-  subject { IvonaSpeechCloud::Speech.new(client, "hello world!") }
+  subject { IvonaSpeechCloud::CreateSpeech.new(client, "hello world!") }
 
   it { expect(subject.text).to eq "hello world!" }
 
@@ -26,7 +26,7 @@ describe IvonaSpeechCloud::Speech do
     end
 
     context "when initialized with options" do
-      let(:speech_with_options) { IvonaSpeechCloud::Speech.new(client, "hello world!", {codec: "OGG"}) }
+      let(:speech_with_options) { IvonaSpeechCloud::CreateSpeech.new(client, "hello world!", {codec: "OGG"}) }
   
       it "sets the payload with the passed options" do
         json_payload = JSON(speech_with_options.payload)
