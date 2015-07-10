@@ -1,6 +1,6 @@
 module IvonaSpeechCloud
   class ListVoices
-    attr_accessor :language, :gender
+    attr_accessor :options
 
     # Initializes a new Voice object
     #
