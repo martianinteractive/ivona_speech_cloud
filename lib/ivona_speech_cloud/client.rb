@@ -17,12 +17,13 @@ module IvonaSpeechCloud
       yield(self) if block_given?
     end
 
+    # Returns the audio representation of the text
+
+    # @param text [String]
+    # @param options [Hash]
+    # @return [String]
     def create_speech(text, options={})
       speech(text, options).create
-    end
-
-    def speech(text, options)
-      Speech.new(self, text, options)
     end
 
     # @return [Hash]
@@ -87,6 +88,15 @@ module IvonaSpeechCloud
     # @return [Boolean]
     def credentials?
       credentials.values.all?
+    end
+
+    private
+
+    # @param text [String]
+    # @param options [Hash]
+    # @return [IvonaSpeechCloud::Speech]
+    def speech(text, options)
+      Speech.new(self, text, options)
     end
   end
 end
