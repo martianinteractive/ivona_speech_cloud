@@ -3,6 +3,18 @@ module IvonaSpeechCloud
 
     attr_accessor :text, :options
 
+    DEFAULT = {
+      :codec => "MP3",
+      :sample_rate => 22050,
+      :rate => "medium",
+      :volume => "medium",
+      :sentence_break => 500,
+      :paragraph_break => 800,
+      :voice_name => "Salli",
+      :language => "en-US",
+      :gender => "Female"
+    }
+
     def initialize(text, options={})
       @text = text
       @options = options
@@ -32,39 +44,39 @@ module IvonaSpeechCloud
     end
 
     def codec
-      options.fetch(:codec, "MP3")
+      options.fetch(:codec, DEFAULT[:codec])
     end
 
     def sample_rate
-      options.fetch(:sample_rate, 22050)
+      options.fetch(:sample_rate, DEFAULT[:sample_rate])
     end
 
     def rate
-      options.fetch(:rate, "medium")
+      options.fetch(:rate, DEFAULT[:rate])
     end
 
     def volume
-      options.fetch(:volume, "medium")
+      options.fetch(:volume, DEFAULT[:volume])
     end
 
     def sentence_break
-      options.fetch(:sentence_break, 500)
+      options.fetch(:sentence_break, DEFAULT[:sentence_break])
     end
 
     def paragraph_break
-      options.fetch(:paragraph_break, 800)
+      options.fetch(:paragraph_break, DEFAULT[:paragraph_break])
     end
 
     def voice_name
-      options.fetch(:voice, "Salli")
+      options.fetch(:voice, DEFAULT[:voice_name])
     end
 
     def language
-      options.fetch(:language, "en-US")
+      options.fetch(:language, DEFAULT[:language])
     end
 
     def gender
-      options.fetch(:gender, "Female")
+      options.fetch(:gender, DEFAULT[:gender])
     end
 
   end
