@@ -50,6 +50,21 @@ module IvonaSpeechCloud
     def host
       "tts.#{region}.ivonacloud.com"
     end
+
+    def x_amz_date
+      date.strftime("%Y%m%dT%H%M%SZ")
+    end
+
+    def date
+      @date ||= Time.now.utc
+    end
+
+    def x_amz_content_sha256(body="")
+      Digest::SHA256.new.update(body).hexdigest
+    end
+
+    def content_type
+      "application/json"
     end
 
     def signed_headers
@@ -67,22 +82,6 @@ module IvonaSpeechCloud
         "X-Amz-Content-SHA256" => x_amz_content_sha256,
         "X-Amz-Date" => x_amz_date
       }
-    end
-
-    def x_amz_date
-      date.strftime("%Y%m%dT%H%M%SZ")
-    end
-
-    def date
-      @date ||= Time.now.utc
-    end
-
-    def x_amz_content_sha256
-      Digest::SHA256.new.update(body).hexdigest
-    end
-
-    def content_type
-      @content_type ||= "application/json"
     end
 
     # @return [Boolean]
