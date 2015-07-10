@@ -1,5 +1,6 @@
 module IvonaSpeechCloud
   class Speech
+    attr_accessor :text, :options
 
     def initialize(client, text, options)
       @client = client
