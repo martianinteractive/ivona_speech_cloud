@@ -26,6 +26,10 @@ module IvonaSpeechCloud
       CreateSpeech.new(self, text, options).run
     end
 
+    def list_voices(options={})
+      ListVoices.new(self, options).run
+    end
+
     # @return [Hash]
     def credentials
       {
