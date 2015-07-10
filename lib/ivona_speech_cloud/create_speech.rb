@@ -18,14 +18,14 @@ module IvonaSpeechCloud
     # Returns the audio representation of the text
     # 
     # @return [String]
-    def create
+    def run
       @client.path = @path
-      @client.body = payload
+      @client.body = input
       perform_post
     end
 
     # @return [Hash]
-    def payload
+    def input
       SpeechInput.new(text, options).params
     end
 
@@ -34,7 +34,7 @@ module IvonaSpeechCloud
     # @return [HTTParty::Response]
     def perform_post
       post_options = {
-        body: payload, 
+        body: input, 
         headers: @client.signed_headers
       }
       HTTParty.post(@client.uri, post_options)

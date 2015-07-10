@@ -14,24 +14,24 @@ describe IvonaSpeechCloud::CreateSpeech do
     before { stubbed_request }
 
     it "returns an HTTParty response" do
-      expect(subject.create.class).to eq HTTParty::Response
+      expect(subject.run.class).to eq HTTParty::Response
     end
   end
 
-  context "#payload" do
+  context "#input" do
     it "contains the input data" do
-      json_payload = JSON(subject.payload)
+      json_input = JSON(subject.input)
       
-      expect(json_payload["Input"]).to eq({"Data" => "hello world!"})
+      expect(json_input["Input"]).to eq({"Data" => "hello world!"})
     end
 
     context "when initialized with options" do
       let(:speech_with_options) { IvonaSpeechCloud::CreateSpeech.new(client, "hello world!", {codec: "OGG"}) }
   
-      it "sets the payload with the passed options" do
-        json_payload = JSON(speech_with_options.payload)
+      it "sets the input with the passed options" do
+        json_input = JSON(speech_with_options.input)
         
-        expect(json_payload["OutputFormat"]).to eq({
+        expect(json_input["OutputFormat"]).to eq({
           "Codec" => "OGG", 
           "SampleRate" => 22050
           })
