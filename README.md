@@ -1,6 +1,6 @@
 # IvonaSpeechCloud
 
-A Ruby client for the Ivona Speech Cloud service.
+A Ruby client for Amazon's Text-to-Speech Service (Ivona Speech Cloud).
 
 ## Installation
 
@@ -25,6 +25,13 @@ end
 
 client.create_speech('Hello world!')
 ```
+
+You can pass a hash of options as the second argument, i.e:
+
+```ruby
+client.create_speech('Hola mundo!', {language: "es-ES", gender: "Female", voice_name: "Conchita"})
+```
+
 
 ## Contributing
 
