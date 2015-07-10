@@ -1,5 +1,17 @@
 module IvonaSpeechCloud
-  class Payload
+  
+  module CommonDefaults
+    def language
+      options.fetch(:language, SpeechInput::DEFAULT[:language])
+    end
+
+    def gender
+      options.fetch(:gender, SpeechInput::DEFAULT[:gender])
+    end
+  end
+
+  class SpeechInput
+    include CommonDefaults
 
     attr_accessor :text, :options
 
@@ -20,9 +32,9 @@ module IvonaSpeechCloud
       @options = options
     end
 
-    def create
+    def params
       {
-        "Input": {
+        "Input" => {
           "Data" => text
         },
         "OutputFormat" => {
@@ -71,12 +83,23 @@ module IvonaSpeechCloud
       options.fetch(:voice, DEFAULT[:voice_name])
     end
 
-    def language
-      options.fetch(:language, DEFAULT[:language])
+  end
+
+  class ListVoicesInput
+    attr_accessor :options
+
+    include CommonDefaults
+
+    def initialize(options={})
+      @options = options
     end
 
-    def gender
-      options.fetch(:gender, DEFAULT[:gender])
+    def params
+      {
+        "Voice" => {
+          "Language" => language
+        }.merge(options)
+      }
     end
 
   end
