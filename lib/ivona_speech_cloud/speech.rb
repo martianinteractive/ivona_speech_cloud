@@ -19,6 +19,8 @@ module IvonaSpeechCloud
       HTTParty.post(uri, body: payload, headers: @client.signed_headers)
     end
 
+    def uri
+      "#{@client.endpoint}#{@path}"
     end
 
     def gender
