@@ -13,12 +13,12 @@ module IvonaSpeechCloud
       @path = "/ListVoices"
     end
 
-    # Returns the audio representation of the text
+    # Returns a list of available voices
     # 
     # @return [String]
     def run
       @client.path = @path
-      @client.body = payload
+      @client.body = input
       perform_post
     end
 
@@ -35,6 +35,7 @@ module IvonaSpeechCloud
         body: input, 
         headers: @client.signed_headers
       }
+      
       HTTParty.post(@client.uri, post_options)
     end
   end
