@@ -1,15 +1,15 @@
 require 'helper'
 
-describe IvonaSpeechCloud::SpeechInput do
+describe IvonaSpeechCloud::Input::CreateSpeech do
   
-  subject { IvonaSpeechCloud::SpeechInput.new("hello world!") }
+  subject { IvonaSpeechCloud::Input::CreateSpeech.new("hello world!") }
 
   it { expect(subject.text).to eq "hello world!" }
 
   it { expect(subject.options).to eq Hash.new }
 
   describe "with options" do
-    subject { IvonaSpeechCloud::SpeechInput.new("Hello world!", {codec: "OGG"}) }
+    subject { IvonaSpeechCloud::Input::CreateSpeech.new("Hello world!", {codec: "OGG"}) }
 
     it { expect(subject.codec).to eq "OGG" }
 
