@@ -68,7 +68,7 @@ module IvonaSpeechCloud
     end
 
     def signed_headers
-      signer.sign("POST", uri, headers, body, true)
+      signer.sign("POST", uri, headers, body)
     end
 
     def signer
