@@ -6,6 +6,7 @@ module IvonaSpeechCloud
       @client = client
       @text = text
       @options = options
+      @path = "/CreateSpeech"
     end
 
     def create
