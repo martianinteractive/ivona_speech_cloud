@@ -12,7 +12,7 @@ module IvonaSpeechCloud
 
     # @return [Hash]
     def input
-      eval(input_class).new(options).params
+      @input ||= eval(input_class).new(options).params
     end
 
     # @return [String]
