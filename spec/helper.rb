@@ -19,9 +19,14 @@ def stub_create_speech_request
   to_return(:status => 200, :body => "", :headers => {})
 end
 
-
 def stub_list_voices_request
-   stub_request(:post, "https://tts.us-east-1.ivonacloud.com/ListVoices").
-   with(:body => "{\"Voice\":{\"Language\":\"en-US\"}}").
-     to_return(:status => 200, :body => "", :headers => {})
+  stub_request(:post, "https://tts.us-east-1.ivonacloud.com/ListVoices").
+  with(:body => "{\"Voice\":{\"Language\":\"en-US\"}}").
+  to_return(:status => 200, :body => "", :headers => {})
+end
+
+def stub_create_speech_request_with_options
+  stub_request(:post, "https://tts.us-east-1.ivonacloud.com/CreateSpeech").
+  with(:body => "{\"Input\":{\"Data\":\"hola mundo!\"},\"OutputFormat\":{\"Codec\":\"MP3\",\"SampleRate\":22050},\"Parameters\":{\"Rate\":\"medium\",\"Volume\":\"medium\",\"SentenceBreak\":500,\"ParagraphBreak\":800},\"Voice\":{\"Name\":\"Enrique\",\"Language\":\"es-ES\",\"Gender\":\"Male\"}}").
+  to_return(:status => 200, :body => "", :headers => {})
 end

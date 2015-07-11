@@ -80,4 +80,14 @@ describe IvonaSpeechCloud::Client do
 
   end
 
+  context "#create_speech with options" do
+    before { stub_create_speech_request_with_options }
+
+    it "modifies the request params with the specified options" do
+      options = {:gender => "Male", :language => "es-ES", :voice_name => "Enrique"}
+
+      expect(subject.create_speech("hola mundo!", options).class.name).to eq "HTTParty::Response"
+    end
+  end
+
 end
