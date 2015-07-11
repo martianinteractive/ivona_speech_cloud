@@ -6,9 +6,7 @@ describe IvonaSpeechCloud::CreateSpeech do
   
   subject { IvonaSpeechCloud::CreateSpeech.new(client, "hello world!") }
 
-  it { expect(subject.text).to eq "hello world!" }
-
-  it { expect(subject.options).to eq Hash.new }
+  it { expect(subject.options).to eq ["hello world!"] }
 
   context "#create" do
     before { stub_create_speech_request }
@@ -26,7 +24,9 @@ describe IvonaSpeechCloud::CreateSpeech do
     end
 
     context "when initialized with options" do
-      let(:speech_with_options) { IvonaSpeechCloud::CreateSpeech.new(client, "hello world!", {codec: "OGG"}) }
+      let(:speech_with_options) { IvonaSpeechCloud::CreateSpeech.new(client, "hello world!", codec: "OGG") }
+
+      it { expect(speech_with_options.options).to eq ["hello world!", {:codec=>"OGG"}] }
   
       it "sets the input with the passed options" do
         json_input = JSON(speech_with_options.input)

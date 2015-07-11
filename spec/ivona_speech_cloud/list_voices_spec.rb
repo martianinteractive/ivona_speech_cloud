@@ -6,7 +6,7 @@ describe IvonaSpeechCloud::ListVoices do
   
   subject { IvonaSpeechCloud::ListVoices.new(client) }
 
-  it { expect(subject.options).to eq Hash.new }
+  it { expect(subject.options).to eq [] }
 
   context "#create" do
     before { stub_list_voices_request }

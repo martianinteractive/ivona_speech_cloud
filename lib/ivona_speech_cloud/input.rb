@@ -29,9 +29,10 @@ module IvonaSpeechCloud
 
       attr_accessor :text, :options
 
-      def initialize(text, options={})
-        @text = text
-        @options = options
+      def initialize(*options)
+        options = options.flatten
+        @text = options.first
+        @options = options.last.is_a?(Hash) ? options.last : {}
       end
 
       def params
@@ -92,8 +93,8 @@ module IvonaSpeechCloud
 
       include CommonDefaults
 
-      def initialize(options={})
-        @options = options
+      def initialize(options)
+        @options = options.first.is_a?(Hash) ? options.first : {}
       end
 
       def params

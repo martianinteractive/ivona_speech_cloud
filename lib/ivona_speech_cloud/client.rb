@@ -22,11 +22,11 @@ module IvonaSpeechCloud
     # @param text [String]
     # @param options [Hash]
     # @return [String]
-    def create_speech(text, options={})
-      CreateSpeech.new(self, text, options).run
+    def create_speech(options)
+      CreateSpeech.new(self, options).run
     end
 
-    def list_voices(options={})
+    def list_voices(options)
       ListVoices.new(self, options).run
     end
 

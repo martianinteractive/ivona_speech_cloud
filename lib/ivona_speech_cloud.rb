@@ -1,5 +1,6 @@
 require "ivona_speech_cloud/version"
 require "ivona_speech_cloud/client"
+require "ivona_speech_cloud/runner"
 require "ivona_speech_cloud/create_speech"
 require "ivona_speech_cloud/list_voices"
 require "ivona_speech_cloud/input"

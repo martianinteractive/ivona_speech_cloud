@@ -1,6 +1,8 @@
 module IvonaSpeechCloud
   class CreateSpeech
-    attr_accessor :text, :options
+    attr_accessor :options
+
+    include Runner
 
     # Initializes a new CreateSpeech object
     #
@@ -8,37 +10,11 @@ module IvonaSpeechCloud
     # @param text [String]
     # @param options [Hash]
     # @return [IvonaSpeechCloud::CreateSpeech]
-    def initialize(client, text, options={})
+    def initialize(client, *options)
       @client = client
-      @text = text
       @options = options
       @path = "/CreateSpeech"
     end
 
-    # Returns the audio representation of the text
-    # 
-    # @return [String]
-    def run
-      @client.path = @path
-      @client.body = input
-      perform_post
-    end
-
-    # @return [Hash]
-    def input
-      Input::CreateSpeech.new(text, options).params
-    end
-
-    private 
-
-    # @return [HTTParty::Response]
-    def perform_post
-      post_options = {
-        body: input, 
-        headers: @client.signed_headers
-      }
-
-      HTTParty.post(@client.uri, post_options)
-    end
   end
 end
