@@ -1,9 +1,7 @@
 module IvonaSpeechCloud
   module Runner
 
-    # Returns a list of available voices
-    # 
-    # @return [String]
+    # @return [HTTParty::Response]
     def run
       @client.path = @path
       @client.body = input

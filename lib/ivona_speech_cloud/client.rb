@@ -18,8 +18,6 @@ module IvonaSpeechCloud
     end
 
     # Returns the audio representation of the text
-    # example options:
-    # create_speech("Hello world!", {voice_name: "Kendra"})
     #
     # @param options [Array] A customizable set of options.
     # @return [String]
@@ -27,6 +25,11 @@ module IvonaSpeechCloud
       CreateSpeech.new(self, options).run
     end
 
+    # Returns a list of TTS voices available.
+    # The list can be filtered by passing a language and/or gender parameter.
+    #
+    # @param options [Hash]
+    # @return [Hash]
     def list_voices(options)
       ListVoices.new(self, options).run
     end
