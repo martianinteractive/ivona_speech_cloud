@@ -4,7 +4,7 @@ describe IvonaSpeechCloud::CreateSpeech do
 
   let(:client) { client_instance }
   
-  subject { IvonaSpeechCloud::CreateSpeech.new(client, "hello world!") }
+  subject { IvonaSpeechCloud::CreateSpeech.new(client, ["hello world!"]) }
 
   it { expect(subject.options).to eq ["hello world!"] }
 
@@ -24,7 +24,7 @@ describe IvonaSpeechCloud::CreateSpeech do
     end
 
     context "when initialized with options" do
-      let(:speech_with_options) { IvonaSpeechCloud::CreateSpeech.new(client, "hello world!", codec: "OGG") }
+      let(:speech_with_options) { IvonaSpeechCloud::CreateSpeech.new(client, ["hello world!", {codec: "OGG"}]) }
 
       it { expect(speech_with_options.options).to eq ["hello world!", {:codec=>"OGG"}] }
   
