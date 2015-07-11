@@ -2,6 +2,10 @@
 
 A Ruby client for Amazon's Text-to-Speech Service (Ivona Speech Cloud).
 
+See: http://www.ivona.com/us/for-business/speech-cloud/
+
+Speech Cloud documentation: http://developer.ivona.com/en/speechcloud/introduction.html
+
 ## Installation
 
 Add this line to your application's Gemfile:
