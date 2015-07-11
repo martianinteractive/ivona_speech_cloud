@@ -29,10 +29,10 @@ module IvonaSpeechCloud
 
       attr_accessor :text, :options
 
-      def initialize(*options)
-        options = options.flatten
+      # @param options [Array]
+      def initialize(options)
         @text = options.first
-        @options = options.last.is_a?(Hash) ? options.last : {}
+        @options = options.last.is_a?(Hash) ? options.pop : {}
       end
 
       def params
