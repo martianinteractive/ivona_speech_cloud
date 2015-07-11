@@ -18,11 +18,12 @@ module IvonaSpeechCloud
     end
 
     # Returns the audio representation of the text
-
-    # @param text [String]
-    # @param options [Hash]
+    # example options:
+    # create_speech("Hello world!", {voice_name: "Kendra"})
+    #
+    # @param options [Array] A customizable set of options.
     # @return [String]
-    def create_speech(options)
+    def create_speech(*options)
       CreateSpeech.new(self, options).run
     end
 
