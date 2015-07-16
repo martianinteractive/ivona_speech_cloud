@@ -11,7 +11,7 @@ Speech Cloud documentation: http://developer.ivona.com/en/speechcloud/introducti
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ivona_speech_cloud', github: "martianinteractive/ivona_speech_cloud"
+gem 'ivona_speech_cloud'
 ```
 
 And then execute:
